@@ -1,3 +1,9 @@
+# Our ignore files
+package-lock.json
+build/*.js
+npm-debug.log
+.DS_Store
+
 # Logs
 logs
 *.log
