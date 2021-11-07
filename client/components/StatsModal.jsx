@@ -1,21 +1,20 @@
 import React, { Component, useState } from 'react';
-import ModalRight from './modal-components/ModalRight.jsx';
-import ModalCenter from './modal-components/ModalCenter.jsx';
-import ModalLeft from './modal-components/ModalLeft.jsx';
+
+import ModalWrapper from './modal-components/ModalWrapper.jsx';
+import { Modal } from '@mui/material';
 
 
-function StatsModal () {
-   //const [name, setName] = useState();
-  // const handleHide = () => setModalShow(false);
 
-  return (
-      <div>
-        <ModalLeft/>
-        <ModalCenter/>
-        <ModalRight/>
-        <h1> You are in Modal </h1>
-      </div>
-  )
-}
+
+
+const StatsModal = ({ modalShow, setModalShow }) => {
+   //const [modalShow, setModalShow] = useState(false);
+
+    return (
+      <>
+      { modalShow ? <ModalWrapper modalShow={modalShow}/> : null }
+      </>
+      )
+  }
 
 export default StatsModal;

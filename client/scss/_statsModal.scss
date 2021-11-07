@@ -1,2 +1,58 @@
 @import '_variables';
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,700&family=Source+Sans+Pro:ital,wght@0,200;0,400;1,200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+.modal-main {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0%;
+  top: 0%;
+  width: 94%; /* Full width */
+  height: 94%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: lighten(#D9D6CF, 80%); 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2%;
+  border: 2px;
+  border-color: black;
+  border-radius: 10px;
+  align-self: center;
+  justify-self: center
+}
+
+.modalLeft {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  padding: 1%;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30%;
+  height: 90%;
+  background-color: transparentize(#D9D6CF, 0.9); 
+}
+
+.modalCenter {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  padding: 1%;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30%;
+  height: 90%;
+  background-color: transparentize(#D9D6CF, 0.9); 
+}
+
+.modalRight {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  padding: 1%;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 45%;
+  height: 90%;
+  background-color: transparentize(#D9D6CF, 0.9); 
+}
 

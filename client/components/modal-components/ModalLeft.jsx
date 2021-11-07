@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react';
-import ModalLeftStringSummary from './ModalLeftStringSummary';
-import ModalLeftTitle from './ModalLeftTitle';
+import ModalLeftStringSummary from './ModalLeftStringSummary.jsx';
+import ModalLeftTitle from './ModalLeftTitle.jsx';
 
 
 function ModalLeft () {
@@ -8,7 +8,7 @@ function ModalLeft () {
   // const handleHide = () => setModalShow(false);
 
   return (
-      <div>
+      <div className="modalLeft">
         <ModalLeftTitle/>
         <ModalLeftStringSummary/>
       </div>

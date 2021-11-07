@@ -1,10 +1,10 @@
 import React, { Component, useState } from 'react';
-import ModalCenterScore from './ModalCenterScore';
+import ModalCenterScore from './ModalCenterScore.jsx';
 
 function ModalCenter () {
    //const [name, setName] = useState();
   return (
-      <div>
+      <div className="modalCenter">
         <ModalCenterScore/>
       </div>
   )

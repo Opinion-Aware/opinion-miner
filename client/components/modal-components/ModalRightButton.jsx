@@ -1,15 +1,14 @@
-import React, { Component, useState } from 'relRighact';
-//import <ModalRightButton></ModalRightButton>
+import React, { Component, useState } from 'react';
 
-function ModalRight () {
+function ModalRightButton () {
   //const [name, setName] = useState();
   // const handleHide = () => setModalShow(false);
 
   return (
       <div>
-        <h1> You are in ModalRight </h1>
+        You are in ModalRightButton
       </div>
   )
 }
 
-export default ModalRight;
+export default ModalRightButton;

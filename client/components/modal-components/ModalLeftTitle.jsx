@@ -6,7 +6,7 @@ function ModalLeftTitle () {
 
   return (
       <div>
-        <h1> You are in ModalLeftTitle </h1>
+        You are in ModalLeftTitle
       </div>
   )
 }

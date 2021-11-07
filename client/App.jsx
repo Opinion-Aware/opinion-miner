@@ -51,7 +51,7 @@ class App extends Component {
       renderContent = <Login setLoginData={this.setLoginData}/>;
     }
     return (
-        <div>
+        <div className="app">
           {renderContent}
           {/* 
           Syntax for alternative option with react router:

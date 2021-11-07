@@ -6,7 +6,7 @@ function ModalLeftStringSummary () {
 
   return (
       <div>
-        <h1> You are in ModalLeftStringSummary </h1>
+        Your users love posts that did this and that, in particular your post about something. On the other hand, they showed indifference towards these others. Lastly, the least liked posts covered topics such as this and those.
       </div>
   )
 }

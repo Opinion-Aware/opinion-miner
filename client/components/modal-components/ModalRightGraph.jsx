@@ -17,7 +17,7 @@ class ModalRightGraph extends Component {
           fill: true,
           lineTension: 0.1,
           pointRadius: 0,
-          backgroundColor: 'rgba(252,214,103)',
+          backgroundColor: '#FF5050',
           borderColor: 'rgba(0,0,0,1)',
           borderWidth: 0,
           data: [1, 2, 3, 4, 5, 6],
@@ -41,7 +41,7 @@ class ModalRightGraph extends Component {
             },
           legend: {
               maxWidth: 0,
-              labels: {boxWidth: 0, boxHeight: 0, color: 'rgba(0,0,0,1)'},
+              labels: {boxWidth: 0, boxHeight: 0, color: '#FF5050'},
               title: {display: false}
           }
         }}

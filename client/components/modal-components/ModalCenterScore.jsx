@@ -4,7 +4,7 @@ function ModalCenterScore () {
    //const [name, setName] = useState();
   return (
       <div>
-        <h1> You are in ModalCenterScore </h1>
+        You are in ModalCenterScore
       </div>
   )
 }
