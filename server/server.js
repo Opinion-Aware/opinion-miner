@@ -10,7 +10,7 @@ app.use(cors());
 /**
  * require routers
  */
-const carousel = require('./routes/carousel');
+const carouselRouter = require('./routes/carousel');
 const sentimentRouter = require('./routes/sentiment');
 
 // handle parsing request body
