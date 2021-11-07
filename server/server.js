@@ -5,7 +5,13 @@ const app = express();
 const PORT = 3000;
 
 // allows for cross origin requests
-app.use(cors())
+app.use(cors()); 
+
+/**
+ * require routers
+ */
+const carouselRouter = require('./routes/carousel');
+const sentimentRouter = require('./routes/sentiment');
 
 // handle parsing request body
 app.use(express.urlencoded({ extended: true }));
@@ -16,6 +22,12 @@ app.get('/', (req, res) => res.status(200).send('Home Page'));
 
 // handle requests for static files
 // app.use('/assets', express.static(path.join(__dirname, '../client/assets')));
+
+// Setup router for sentiment data 
+app.use('/sentiment', sentimentRouter);
+
+// Setup router for carousel data 
+app.use('/carousel', carouselRouter);
 
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) => {
