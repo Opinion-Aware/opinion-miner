@@ -6,7 +6,7 @@ import StatsModal from './StatsModal.jsx';
 function Dashboard () {
   const [modalShow, setModalShow] = useState(false);
   const handleShow = () => setModalShow(true);
-
+  
   return (
       <div>
         <h1> You are in Dashboard </h1>
