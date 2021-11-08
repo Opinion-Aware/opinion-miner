@@ -1,6 +1,4 @@
-import { fontWeight } from '@mui/system';
 import React from 'react';
-
 
 function PostAnalysis({ postSentiment }) {
   const modifiedhashtag = []
@@ -10,7 +8,6 @@ function PostAnalysis({ postSentiment }) {
 
   let scoreColor = '#996666'
   if (postSentiment.data.sentiment_score > 5) scoreColor = '#92acb4'
-
 
   return (
     // console.log(postSentiment.data.hashtags)
