@@ -22,6 +22,7 @@ class App extends Component {
       userStatistics: [], // Information for summary modal
       postSentiment: {}, // Single object
       postSentimentRender: false, // Tells the dashboard whether we have a sentiment analysis to render
+      modalShow: false,
     }
 
   // TODO Comment out this example of post Sentiment Object
@@ -47,6 +48,7 @@ class App extends Component {
     this.getUserPosts = this.getUserPosts.bind(this);
     this.getPostSentiment = this.getPostSentiment.bind(this);
     this.getStatistics = this.getStatistics.bind(this);
+    this.setModalShow = this.setModalShow.bind(this);
   }
 
   getUserPosts() {
@@ -79,6 +81,13 @@ class App extends Component {
     });
   }
 
+  setModalShow () {
+    console.log(this.state)
+    console.log("settingmodal")
+    const modalShow = !this.state.modalShow;
+    this.setState({modalShow});
+  }
+
   // TODO:  Stretch: Format method to pass in user id
   getStatistics() {
     fetch('http://localhost:3000/sentiment/summary') 
@@ -87,17 +96,12 @@ class App extends Component {
       res = JSON.parse(res)
       console.log('userstats',res)
       const userStatistics = res;
-      this.setState({ userStatistics })
+      this.setState({ userStatistics }, this.setModalShow)
     })
     .catch(function (error) {
       console.error(error);
     });
   }
-//   const summaryObject = {
-//     summaryText: emptyDescription, 
-//     averageScore: 0, 
-//     analyses: []
-// }
 
 
   setLoginData(response) {
@@ -120,14 +124,17 @@ class App extends Component {
     let renderContent;
     if (this.state.user.isLoggedIn) {   //({ name, userStats , getPosts })
       renderContent = <Dashboard
-        name={"kim k"} // TODO: UPDATE WITH LINE BELOW TO USE OAUTH USER NAME
-        // name={this.state.user.name} 
-        userStats={this.state.userStats} 
+        // TODO STRETCH: UPDATE WITH LINE BELOW TO USE OAUTH USER NAME
+        name={"kim k"} // Stretch: name={this.state.user.name} 
+        userStats={this.state.userStatistics} 
         userPosts={this.state.userPosts} 
         getPosts={this.getPosts}
         postSentiment={this.state.postSentiment}
         getPostSentiment={this.getPostSentiment}
         postSentimentRender={this.state.postSentimentRender}
+        getStats={this.getStatistics}
+        setModalShow={this.setModalShow}
+        modalShow={this.state.modalShow}
       />;
     } else {
       renderContent = <Login setLoginData={this.setLoginData}/>;

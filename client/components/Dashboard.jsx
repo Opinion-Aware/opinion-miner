@@ -7,15 +7,10 @@ import PostAnalysis from './PostAnalysis.jsx';
 import PostContainer from './PostContainer.jsx';
 
 
-function Dashboard ({ name, userStats , userPosts, getPosts, postSentiment, getPostSentiment ,postSentimentRender}) {
-  const [modalShow, setModalShow] = useState(false);
-  const openModal = () => {
-    setModalShow(prev => !prev);
-  }
-
+function Dashboard ({ name, userStats , userPosts, postSentiment, getPostSentiment ,postSentimentRender, getStats, setModalShow, modalShow}) {
   return (
       <div className="dashboardContainer">
-        <Welcome name={name} userStats={userStats} openModal={openModal}/>
+        <Welcome name={name} userStats={userStats} getStats={getStats}/>
         {postSentimentRender ? <PostAnalysis postSentiment={postSentiment}/> : null }
         <PostContainer userPosts={userPosts} getPostSentiment={getPostSentiment}/>
         <StatsModal name={name} userStats={userStats} modalShow={modalShow} setModalShow={setModalShow}/>
