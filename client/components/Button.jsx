@@ -24,4 +24,4 @@ function ButtonStyled() {
 
 
 
-export default App;
+export default ButtonStyled;
