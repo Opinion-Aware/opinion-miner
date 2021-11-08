@@ -8,8 +8,8 @@ function ModalWrapper ({ name, userStats, setModalShow }) {
   return (
       <div className="modal-main">
         <ModalLeft name={name} userStats={userStats}/>
-        <ModalCenter name={name} userStats={userStats}/>
-        <ModalRight name={name} userStats={userStats} setModalShow={setModalShow}/>
+        <ModalCenter userStats={userStats}/>
+        <ModalRight userStats={userStats} setModalShow={setModalShow}/>
       </div>
   )
 }

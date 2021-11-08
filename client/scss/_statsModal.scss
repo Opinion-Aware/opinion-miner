@@ -24,27 +24,54 @@
 }
 
 .modalLeft {
-  font-family: 'Montserrat', sans-serif;
   display: flex;
-  padding: 1%;
+  padding: $box-padding;
   flex-direction: column;
   justify-content: space-between;
-  width: 30%;
-  height: 90%;
+  width: 26vw;
+  height: 90vh;
   background-color: transparentize(#D9D6CF, 0.9); 
 }
 
-.modalCenter {
+.modalLeftTitle {
+  border-radius: $border-radius;
+  font-family: 'Permanent Marker', cursive;
+  background-color: transparentize(white, 0.5);
+  color: $color-background-dark;
+  font-size: 50px !important;
+  white-space: nowrap;
+  line-height: $title-line-height;
+  padding-top: $box-padding;
+}
+
+.statsSummaryText {
+  text-indent: 40px;
   font-family: 'Montserrat', sans-serif;
   font-size: 20px;
+  line-height: 28px;
   display: flex;
-  padding: 1%;
+  flex-direction: column;
+  justify-content: space-between;
+  text-justify: inter-character !important;
+}
+
+.modalCenter {
+  display: flex;
+  padding: $box-padding;
   flex-direction: column;
   justify-content: flex-end;
   width: 30%;
   height: 90%;
   background-color: transparentize(#D9D6CF, 0.9); 
 }
+
+.summaryScore{
+  font-family: 'Permanent Marker', cursive;
+  background-color: transparentize(white, 0.5);
+  color: $color-background;
+  font-size: 30px;
+  text-justify: right;
+} 
 
 .modalRight {
   font-family: 'Montserrat', sans-serif;
