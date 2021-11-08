@@ -17,7 +17,8 @@ module.exports = {
         // re-routing api fetch calls to localhost 3000 (which has access to express)
         proxy: {
             '/api': 'http://localhost:3000' // or use '/*' instead of '/api' to take care of all other fetch calls
-        }
+        },
+        historyApiFallback: true // added API fallback as needed for react-router
     },
     plugins: [
         new HtmlWebpackPlugin({

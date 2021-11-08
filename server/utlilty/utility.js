@@ -20,4 +20,9 @@ Utility.getSentimentTextFromIgMedia = (igMedia) => {
     return returnString; 
 }
 
+Utility.convertSentimentScore = sentScore => {
+    const newValue = (((sentScore + 1) * 10) / 2)
+    return Math.round(10 * newValue) / 10;
+}
+
 module.exports = Utility; 

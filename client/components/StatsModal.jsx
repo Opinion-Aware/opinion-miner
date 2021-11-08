@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 
-function StatsModal () {
-  // const [modalShow, setModalShow] = useState();
-  // const handleHide = () => setModalShow(false);
+import ModalWrapper from './modal-components/ModalWrapper.jsx';
 
-  return (
-      <div>
-        <h1> You are in Modal </h1>
-      </div>
-  )
-}
+
+const StatsModal = ({ name, userStats, modalShow, setModalShow }) => {
+
+    return (
+      <>
+      { modalShow ? <ModalWrapper name={name} userStats={userStats} setModalShow={setModalShow}/> : null }
+      </>
+      )
+  }
 
 export default StatsModal;
