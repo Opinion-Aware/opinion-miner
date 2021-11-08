@@ -1,19 +1,22 @@
 import React, { Component, useState }from 'react';
 
 import StatsModal from './StatsModal.jsx';
+import { Modal } from '@mui/material';
 
 
-function Dashboard () {
+function Dashboard ({ name, userStats }) {
   const [modalShow, setModalShow] = useState(false);
-  const handleShow = () => setModalShow(true);
+  const openModal = () => {
+    setModalShow(prev => !prev);
+  }
 
   return (
       <div>
         <h1> You are in Dashboard </h1>
-        <button variant="primary" onClick={handleShow} >
+        <button onClick={openModal} >
             Launch Modal
         </button>
-        <StatsModal/>
+        <StatsModal name={name} userStats={userStats} modalShow={modalShow} setModalShow={setModalShow}/>
       </div>
   )
 }

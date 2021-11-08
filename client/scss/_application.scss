@@ -1,2 +1,12 @@
 @import '_variables';
+@import '_statsModal';
 
+.app {
+  display: flex;
+}
+
+.loginBox {
+  display: flex;
+  justify-content: center;
+  align-items: center
+}

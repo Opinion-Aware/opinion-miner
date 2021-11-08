@@ -1,25 +1,23 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import FacebookLogin from 'react-facebook-login';
 
 
-const responseFacebook = (response) => {
-  console.log(response);
-}
-
-  function Login() {
-    return (
-      <div>
-        <h1> You are in Login </h1>
-        <FacebookLogin
-          appId="2982133178693704"
-          autoLoad={true}
-          fields="name,email,picture"
-          //onClick={componentClicked}
-          callback={responseFacebook} />
-      </div>
-    );
+class Login extends Component {
+  constructor(props) {
+    super(props);
   }
 
+  render () {
+    return(      
+      <div className="loginBox">
+      <FacebookLogin
+        appId="177160351206924" //appId For non test version ="2982133178693704" 
+        autoLoad={true}
+        fields="name,email,picture"
+        callback={(resp) => this.props.setLoginData(resp)} 
+      />
+    </div>)
+  }
+}
 
-
-  export default Login;
+  export default Login
