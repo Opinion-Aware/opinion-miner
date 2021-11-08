@@ -4,7 +4,7 @@ import StatsModal from './StatsModal.jsx';
 import { Modal } from '@mui/material';
 
 
-function Dashboard ({ name, userStats }) {
+function Dashboard ({ name, userStats , userPosts, getPosts }) {
   const [modalShow, setModalShow] = useState(false);
   const openModal = () => {
     setModalShow(prev => !prev);
@@ -12,7 +12,7 @@ function Dashboard ({ name, userStats }) {
 
   return (
       <div>
-        <h1> You are in Dashboard </h1>
+        <h1> {JSON.stringify(userPosts)} </h1>
         <button onClick={openModal} >
             Launch Modal
         </button>

@@ -18,11 +18,68 @@ class App extends Component {
         picture: {},
         userId: '',
         isLoggedIn: false,
-        }
+        },
+      userPosts : [], // Array of objects
+      userStatistics: [],  //TODO Decide on format
+      postSentiment: {}, // Single object
+
     }
+
+  // TODO Comment out this example of post Sentiment Object
+  //   {
+  //     "post_id": "2",
+  //     "media_url": "instagram image url",
+  //     "hashtags": [
+  //         "love",
+  //         "mom",
+  //         "birthday"
+  //     ],
+  //     "username": "kimkardashian",
+  //     "caption": "Happy Birthday Mommy!!!! @krisjenner, you are ultimate goals! You are my hero! You are my life! Thank you for being the most non-judgmental loving human being I’ve ever met. You take care of us all so selflessly. Words can’t describe my love for you!!!!!!!!! OMG I love you so much mom!!!",
+  //     "sentiment_score": 9.5,
+  //     "sentiment_magnitude": 9.600000381469727,
+  //     "post_date": "2021-11-05T21:11:30.000Z",
+  //     "analysis_date": "Sun Nov 07 2021 19:04:31 GMT-0500 (Eastern Standard Time)",
+  //     "analysis_description": "This is where Text description of how the post was received based on sentiment analysis score would be stored"
+  // }
 
     // Function Binds
     this.setLoginData = this.setLoginData.bind(this);
+    this.getUserPosts = this.getUserPosts.bind(this);
+    this.getPostSentiment = this.getPostSentiment.bind(this);
+    this.getStatistics = this.getStatistics.bind(this);
+  }
+
+  getUserPosts() {
+    fetch('http://localhost:3000/carousel')
+    .then(res => res.text())
+    .then(res => {
+      res = JSON.parse(res)
+      const userPosts = res;
+      this.setState({ userPosts })
+    });
+  }
+  
+  getPostSentiment(postID) {
+    fetch('http://localhost:3000/sentiment', { 
+      body: JSON.stringify({ postID })
+    })
+    .then(res => res.text())
+    .then(res => {
+      res = JSON.parse(res)
+      const postSentiment = res;
+      this.setState({ postSentiment })
+    });
+  }
+
+  getStatistics() {
+    fetch('http://localhost:3000/statistics')  // TODO Confirm endpoint
+    .then(res => res.text())
+    .then(res => {
+      res = JSON.parse(res)
+      const userStatistics = res;
+      this.setState({ userStatistics })
+    });
   }
 
 
@@ -38,15 +95,21 @@ class App extends Component {
             picture: response.picture.data, // Ex: {height: 50, is_silhouette: false, width: 50, url: "https://platform-lookaside.fbsbx.com/..."}
             isLoggedIn: true
           }
-        });
+        }, this.getUserPosts);
     } else console.log("Must Sign In");
   }
 
   render() {
     console.log('Current State ',this.state)
     let renderContent;
-    if (this.state.user.isLoggedIn) {
-      renderContent = <Dashboard/>;
+    if (this.state.user.isLoggedIn) {   //({ name, userStats , getPosts })
+      renderContent = <Dashboard 
+        name={this.state.name} 
+        userStats={this.state.userStats} 
+        userPosts={this.state.userPosts} 
+        getPosts={this.getPosts}
+        getPostSentiment={this.getPostSentiment}
+      />;
     } else {
       renderContent = <Login setLoginData={this.setLoginData}/>;
     }
