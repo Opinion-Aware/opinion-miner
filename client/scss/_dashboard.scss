@@ -1,0 +1,92 @@
+@import '_variables';
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,700&family=Source+Sans+Pro:ital,wght@0,200;0,400;1,200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+
+.dashboardContainer {
+  background-color: transparentize($color-background-light,0.5);
+  font-family: 'Montserrat', sans-serif;
+  display: flex !important;    
+  flex-direction: row !important;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100vw;
+  height: 100vh;
+}
+
+.welcome {
+  font-family: 'Permanent Marker', cursive;
+  line-height: 120px;
+  color: $color-background-dark;
+  font-size: 30px;
+  padding: 2vw;
+  width: 25vw;
+  height: 30vh;
+  display: flex ;    
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  padding-bottom: 20px;
+}
+
+.buttonStats {
+  background-color: transparentize(white, 0.5);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 17px;
+  border-radius: 9px;
+  padding: 8px;
+  border: 0px;
+  &:hover {
+    background-color: transparentize(white, 0.2);
+    color: $color-accent;
+  }
+}
+
+.singlePost {
+  background: 'linear-gradient(45deg, #FE6B8B, #ff8e53)';
+  border: none;
+  border: 15;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+}
+
+
+
+.postScroll {
+  display: flex ;    
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.postAnalysis {
+  padding-left: 20px;
+  padding-right: 30px;
+  font-size: 18px;
+  width: 35%;
+  height: 90%;
+  max-width: 30%;
+  display: flex ;    
+  flex-direction: column;
+  justify-content: flex-end;
+  background-color: transparentize(white, 0.8);
+}
+
+.postContainer {
+  background-color: white;
+  padding: 10px;
+  width: 40vw;
+  height: 90vh;
+  display: flex ;    
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  overflow: auto;
+}
+
+.postContainer::-webkit-scrollbar{
+  width: 0;
+}      
+
+
+

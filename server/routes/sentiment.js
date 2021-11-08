@@ -6,6 +6,7 @@ const sentimentController = require('../controllers/sentimentController');
 const router = express.Router();
 
 // sentiment analasis for a single post
+
 router.post('/', sentimentController.getSentiment, (req, res) => {
     return res.status(200).json(res.locals.sentiment);
   });

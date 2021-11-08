@@ -9,18 +9,20 @@ import Typography from '@mui/material/Typography';
 
 
 
-export default function SinglePost() {
+export default function SinglePost({postInfo, post_id, getPostSentiment}) {
 
 
 
     return (
-        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+      <button className="singlePost" onClick={() => getPostSentiment(post_id)}>
+        <List sx={{ width: '100%', Width: 500, bgcolor: 'background.paper' }}>
             <ListItem alignItems="flex-start">
                 <ListItemAvatar>
+                    {/* // TODO UPDATE IMAGE SOURCE SO THAT IT SHOWS: {postInfo.media_url} */}
                     <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
                 </ListItemAvatar>
                 <ListItemText
-                    primary="Brunch this weekend?"
+                    primary={postInfo.caption}
                     secondary={
                         <React.Fragment>
                             <Typography
@@ -31,12 +33,13 @@ export default function SinglePost() {
                             >
                                 Fake Kim K
                             </Typography>
-                            {" — generic tweet about something boring"}
+                            {/* // TODO: Replace below with Location / LikeCount / Date ?? */}
+                            {" — generic tweet about something boring"} 
                         </React.Fragment>
                     }
                 />
             </ListItem>
-            <Divider variant="inset" component="li" />
+            {/* <Divider variant="inset" component="li" />
             <ListItem alignItems="flex-start">
                 <ListItemAvatar>
                     <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
@@ -79,7 +82,8 @@ export default function SinglePost() {
                         </React.Fragment>
                     }
                 />
-            </ListItem>
+            </ListItem> */}
         </List>
+      </button>
     );
 }
