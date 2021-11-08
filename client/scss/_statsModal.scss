@@ -55,23 +55,34 @@
   text-justify: inter-character !important;
 }
 
+.summaryScore{
+  font-family: 'Permanent Marker', cursive;
+  color: $color-background;
+  font-size: 30px;
+  max-width: 24vw;
+  height: 30vh;
+  text-justify: right;
+} 
+
 .modalCenter {
   display: flex;
   padding: $box-padding;
   flex-direction: column;
   justify-content: flex-end;
-  width: 30%;
-  height: 90%;
+  width: 20vw;
+  height: 90vh;
   background-color: transparentize(#D9D6CF, 0.9); 
 }
 
-.summaryScore{
-  font-family: 'Permanent Marker', cursive;
-  background-color: transparentize(white, 0.5);
-  color: $color-background;
-  font-size: 30px;
-  text-justify: right;
-} 
+.selectedEntry {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-bottom: 10vh;
+  max-height: 60vh;
+  font-size: 12px;
+}
+
 
 .modalRight {
   font-family: 'Montserrat', sans-serif;
@@ -79,7 +90,7 @@
   padding: 1%;
   flex-direction: column;
   justify-content: space-between;
-  width: 45%;
+  width: 50%;
   height: 90%;
   background-color: transparentize(#D9D6CF, 0.9); 
 }

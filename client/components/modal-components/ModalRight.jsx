@@ -2,14 +2,12 @@ import React, { Component, useState } from 'react';
 import ModalRightButton from './ModalRightButton.jsx';
 import ModalRightGraph from './ModalRightGraph.jsx';
 
-function ModalRight ({ userStats, setModalShow }) {
+function ModalRight ({ userStats, setModalShow, setEntryData, setShowEntry}) {
 
   return (
       <div className="modalRight">
         <ModalRightButton setModalShow={setModalShow}/>
-        <ModalRightGraph analyses={[]}/>
-        {/* //TODO Uncommend after backend endpoint is added
-        <ModalRightGraph analyses={userStats.analyses}/> */}
+        <ModalRightGraph analyses={userStats.analyses} setEntryData={setEntryData} setShowEntry={setShowEntry}/>
       </div>
   )
 }

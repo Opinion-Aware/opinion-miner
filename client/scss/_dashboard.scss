@@ -4,7 +4,7 @@
 
 
 .dashboardContainer {
-  background-color: transparentize($color-background-light,0.5);
+  background-color: transparentize($color-background-light,0.3);
   font-family: 'Montserrat', sans-serif;
   display: flex !important;    
   flex-direction: row !important;
@@ -38,6 +38,8 @@
   font-size: 17px;
   border-radius: $border-radius;
   padding: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
   border: 0px;
   &:hover {
     background-color: transparentize(white, 0.2);

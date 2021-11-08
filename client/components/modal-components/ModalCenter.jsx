@@ -1,13 +1,12 @@
 import React, { Component, useState } from 'react';
-import ModalCenterScore from './ModalCenterScore.jsx';
+import ModalCenterScore from './ModalLeftScore.jsx';
+import ModalCenterSelectedEntry from './ModalCenterSelectedEntry.jsx';
 
-function ModalCenter ({ userStats }) {
-   //const [name, setName] = useState();
+function ModalCenter ({ userStats, showEntry, entryData}) {
+
   return (
       <div className="modalCenter">
-        <ModalCenterScore score={"8.2"}/>
-        {/* // TODO: Uncomment after backend endpoint incorporated  */}
-        {/* <ModalCenterScore score={userStats.averageScore}/> */}
+        <ModalCenterSelectedEntry showEntry={showEntry} entryData={entryData}/>
       </div>
   )
 }
