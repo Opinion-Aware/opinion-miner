@@ -11,6 +11,52 @@ import Typography from '@mui/material/Typography';
 
 export default function SinglePost({ postInfo, post_id, getPostSentiment }) {
 
+    // helper fucntion to format like count 
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    // function to format date
+    function formatDate(d) {
+        // helper obj to convert num month to string 
+        let monthNumToWord = {
+            '01': 'Jan',
+            '02': 'Feb',
+            '03': 'Mar',
+            '04': 'Apr',
+            '05': 'May',
+            '06': 'Jun',
+            '07': 'Jul',
+            '08': 'Aug',
+            '09': 'Sep',
+            '10': 'Oct',
+            '11': 'Nov',
+            '12': 'Dec',
+        }
+
+        // get year + month + date from string 
+        let year = d.split('T')[0].split('-')[0];
+        let month = d.split('T')[0].split('-')[1];
+        let date = d.split('T')[0].split('-')[2];
+
+        // convert month to word representation 
+        month = monthNumToWord[month];
+
+        // strip leading 0 from date 
+        if (date.slice(0, 1) === '0') {
+            date = date.slice(1);
+        }
+
+        // format year 
+        year = year.slice(2);
+
+        return `${month} ${date}, '${year}`;
+    }
+
+    // format likes + date string 
+    let dateAndLikeString = `${formatDate(postInfo.timestamp)} | Likes: ${numberWithCommas(postInfo.likes_count)}`;
+
+
 
 
     return (
@@ -23,7 +69,7 @@ export default function SinglePost({ postInfo, post_id, getPostSentiment }) {
                             alt="Remy Sharp"
                             // sx={ width: 24, height: 24 }
                             variant='square'
-                            src='https://i.imgur.com/0N4Huwn.jpg'
+                            src={postInfo.media_url}
                         />
                     </ListItemAvatar>
                     <ListItemText
@@ -31,10 +77,10 @@ export default function SinglePost({ postInfo, post_id, getPostSentiment }) {
                         primary={
                             <React.Fragment>
                                 <Typography
-                                    sx={{ fontFamily: 'Montserrat, sans-serif', display: 'inline' }}
+                                    sx={{ fontFamily: 'Montserrat, sans-serif', display: 'inline', fontWeight: '900' }}
                                     component="span"
                                     variant="body2"
-                                    color="#0a1429"
+                                    color="#262626"
                                 >
                                     {postInfo.caption}
                                 </Typography>
@@ -49,7 +95,7 @@ export default function SinglePost({ postInfo, post_id, getPostSentiment }) {
                                     variant="body2"
                                     color="#0a1429"
                                 >
-                                    @kimkardashian  {postInfo.likes_count} likes
+                                    {dateAndLikeString}
                                 </Typography>
                                 {/* // TODO: Replace below with  / LikeCount / Date ?? */}
                                 { }

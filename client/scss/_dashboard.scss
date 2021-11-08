@@ -6,8 +6,8 @@
 .dashboardContainer {
   background-color: transparentize($color-background-light,0.5);
   font-family: 'Montserrat', sans-serif;
-  display: flex !important;    
-  flex-direction: row !important;
+  display: flex;    
+  flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
   width: 98vw;
@@ -49,15 +49,15 @@
   background: 'linear-gradient(45deg, #FE6B8B, #ff8e53)';
   border: none;
   border: 15;
+  
   font-family: 'Montserrat', sans-serif;
   font-size: 10px;
 }
 
-.postScroll {
-  display: flex ;    
+#postScroll {
+  display: flex;    
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-end;
 }
 
 .postAnalysis {
