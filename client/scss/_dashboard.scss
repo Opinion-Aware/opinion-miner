@@ -76,6 +76,12 @@
   justify-content: flex-end;
 }
 
+.postAnalysis img {
+  overflow: auto;
+  border-radius: inherit;
+  margin-top: 20px;
+}
+
 .postContainer {
   background-color: white;
   padding: 10px;
