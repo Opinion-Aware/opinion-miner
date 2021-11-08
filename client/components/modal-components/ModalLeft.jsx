@@ -3,7 +3,7 @@ import ModalLeftStringSummary from './ModalLeftStringSummary.jsx';
 import ModalLeftTitle from './ModalLeftTitle.jsx';
 
 
-function ModalLeft () {
+function ModalLeft ({ name, userStats }) {
    //const [name, setName] = useState();
   // const handleHide = () => setModalShow(false);
 

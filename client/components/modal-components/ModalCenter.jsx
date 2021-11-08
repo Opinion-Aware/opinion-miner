@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react';
 import ModalCenterScore from './ModalCenterScore.jsx';
 
-function ModalCenter () {
+function ModalCenter ({ name, userStats }) {
    //const [name, setName] = useState();
   return (
       <div className="modalCenter">

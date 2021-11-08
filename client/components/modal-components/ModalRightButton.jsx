@@ -1,13 +1,11 @@
 import React, { Component, useState } from 'react';
 
-function ModalRightButton () {
+function ModalRightButton ({setModalShow}) {
   //const [name, setName] = useState();
   // const handleHide = () => setModalShow(false);
 
   return (
-      <div>
-        You are in ModalRightButton
-      </div>
+    <button id="closeModal" onClick={() => setModalShow()}> X </button>
   )
 }
 

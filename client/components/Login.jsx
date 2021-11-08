@@ -9,8 +9,7 @@ class Login extends Component {
 
   render () {
     return(      
-      <div>
-      <h1> You are in Login </h1>
+      <div className="loginBox">
       <FacebookLogin
         appId="177160351206924" //appId For non test version ="2982133178693704" 
         autoLoad={true}

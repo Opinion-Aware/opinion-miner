@@ -3,13 +3,13 @@ import ModalRight from './ModalRight.jsx';
 import ModalCenter from './ModalCenter.jsx';
 import ModalLeft from './ModalLeft.jsx';
 
-function ModalWrapper () {
-   //const [name, setName] = useState();
+function ModalWrapper ({ name, userStats, setModalShow }) {
+ 
   return (
       <div className="modal-main">
-        <ModalLeft/>
-        <ModalCenter/>
-        <ModalRight/>
+        <ModalLeft name={name} userStats={userStats}/>
+        <ModalCenter name={name} userStats={userStats}/>
+        <ModalRight name={name} userStats={userStats} setModalShow={setModalShow}/>
       </div>
   )
 }

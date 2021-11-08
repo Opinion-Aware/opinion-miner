@@ -4,7 +4,7 @@ function ModalCenterScore () {
    //const [name, setName] = useState();
   return (
       <div>
-        You are in ModalCenterScore
+        Your average score is 7.6 / 10
       </div>
   )
 }

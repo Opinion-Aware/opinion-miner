@@ -2,13 +2,13 @@ import React, { Component, useState } from 'react';
 import ModalRightButton from './ModalRightButton.jsx';
 import ModalRightGraph from './ModalRightGraph.jsx';
 
-function ModalRight () {
+function ModalRight ({ name, userStats, setModalShow }) {
   //const [name, setName] = useState();
   // const handleHide = () => setModalShow(false);
 
   return (
       <div className="modalRight">
-        <ModalRightButton/>
+        <ModalRightButton setModalShow={setModalShow}/>
         <ModalRightGraph/>
       </div>
   )

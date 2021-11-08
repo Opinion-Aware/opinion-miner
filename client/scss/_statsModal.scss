@@ -36,10 +36,11 @@
 
 .modalCenter {
   font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
   display: flex;
   padding: 1%;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   width: 30%;
   height: 90%;
   background-color: transparentize(#D9D6CF, 0.9); 
@@ -56,3 +57,13 @@
   background-color: transparentize(#D9D6CF, 0.9); 
 }
 
+#closeModal {
+  font-family: 'Montserrat', sans-serif;
+  color: gray;
+  width: 10px;
+  height: 10px;
+  margin-right: 3px;
+  align-self: flex-end;
+  background-color: transparent; 
+  border: none;
+}
