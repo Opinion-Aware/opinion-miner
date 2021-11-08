@@ -3,6 +3,7 @@ const path = require('path');
 const utils = require('../utlilty/utility')
 // Imports the Google Cloud client library
 const language = require('@google-cloud/language');
+const Utility = require('../utlilty/utility');
 // google project id
 const projectId = 'opinion-miner-331420'
 // json file that contains private keys. Contains auth information to talk to google's language api
@@ -12,16 +13,25 @@ const client = new language.LanguageServiceClient({ projectId, keyFilename });
 const sentimentController = {};
 
 sentimentController.getSentiment = async (req, res, next) => {
-    // received from client side. Used for finding comments pertaining to the desired post
-    const postID = req.body.postID
+    console.log('postID: '); 
+    console.log(req.query.postID);
+    // EDGE CASE: No postID provided
+    if (!req.query.postID) {
+        console.log('No PostID provided!'); 
+        return next(); 
+    }
 
-    const sentimentCahe = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../db/sentimentCache.json'), 'UTF-8'));
+    // received from client side. Used for finding comments pertaining to the desired post
+    const postID = req.query.postID;
+
+    const sentimentCache = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../db/sentimentCache.json'), 'UTF-8'));
+
 
     // if any item in cache then iterate and find matching post id and return the response object
-    if (sentimentCahe.length !== 0) {
-        for (let i = 0; i < sentimentCahe.length; i++) {
-            if (sentimentCahe[i].post_id === postID) {
-                res.locals.sentiment = sentimentCahe[i]
+    if (sentimentCache.length !== 0) {
+        for (let i = 0; i < sentimentCache.length; i++) {
+            if (sentimentCache[i].post_id === postID) {
+                res.locals.sentiment = sentimentCache[i]
                 return next();
             }
         }
@@ -56,21 +66,36 @@ sentimentController.getSentiment = async (req, res, next) => {
     if (result) {
         const sentiment = result.documentSentiment;
 
+        // dynamically create analysis_description based on sentiment score
+        // aribtrarily decided the following breakdown: 
+        // good post score: > 7
+        // mid post score: between 3 and 7
+        // bad post: < 3
+        let analysisDescription; 
+        if(sentiment.score > 7){
+            analysisDescription = `Your audience loved this post! It looks like they love content related to ${post.hashtags[0]} and ${post.hashtags[1]}. Try posting more content like this to keep your audience engaged.`;
+        } else if (sentiment.score < 7 && sentiment.score > 3){
+            analysisDescription = `This post was well received overall, though it did not elicit particularly high enthusiasm from your audience. Try performing analyses on more posts to determine what content your audience enjoys the most.`;
+        } else{
+            analysisDescription = `Your audience reacted negatively to this post. It looks like didn't enjoy content related to ${post.hashtags[0]} and ${post.hashtags[1]}. Avoid posting content like this to keep your audience engaged.`;
+        }
+
         res.locals.sentiment = {
             post_id: postID,
             media_url: post.media_url,
             hashtags: post.hashtags,
+            likes_count: post.likes_count,
             username: post.ig_user.username,
             caption: post.caption,
             sentiment_score: utils.convertSentimentScore(sentiment.score),
             sentiment_magnitude: sentiment.magnitude,
             post_date: post.timestamp,
             analysis_date: Date(),
-            analysis_description: 'This is where Text description of how the post was received based on sentiment analysis score would be stored'
+            analysis_description: analysisDescription
         }
 
-        sentimentCahe.push(res.locals.sentiment)
-        fs.writeFileSync(path.resolve(__dirname, '../db/sentimentCache.json'), JSON.stringify(sentimentCahe), 'UTF-8')
+        sentimentCache.push(res.locals.sentiment)
+        fs.writeFileSync(path.resolve(__dirname, '../db/sentimentCache.json'), JSON.stringify(sentimentCache), 'UTF-8')
         return next();
     } else {
         return next({
@@ -80,5 +105,37 @@ sentimentController.getSentiment = async (req, res, next) => {
     }
 };
 
+// gets top + bottom 3 analyses from senimentCache 
+// --> eventually this will be from the database
+sentimentController.getSentimentSummary = async (req, res, next) => {
+    try{
+        // get all sentiment analyses from storage
+        // eventually this will be from the database
+        const sentimentAnalyses = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../db/sentimentCache.json'), 'UTF-8'));
+
+        const emptyDescription = "Looks like you haven't analyzed any posts yet!";
+
+        const summaryObject = {
+            summaryText: emptyDescription,
+            averageScore: 0,
+            analyses: []
+        }
+
+        // EDGE CASE: none are in the DB
+        if (sentimentAnalyses.length === 0) return summaryObject;
+
+        // get summaryObject from helper function 
+        summaryObject = Utility.getSummaryObject(sentimentAnalyses, summaryObject); 
+
+        // send response 
+        res.locals.sentimentSummary = summaryObject;
+        return next();
+
+    } catch(error){
+        console.log('Error in sentimentController.getSentimentSummary'); 
+        console.log(error); 
+        return next(error); 
+    }
+}
 
 module.exports = sentimentController;
