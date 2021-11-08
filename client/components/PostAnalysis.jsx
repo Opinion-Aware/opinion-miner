@@ -6,6 +6,11 @@ function PostAnalysis({ postSentiment }) {
     modifiedhashtag.push(`#${el} `)
   })
 
+  // helper fucntion to format like count 
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   let scoreColor = '#996666'
   if (postSentiment.data.sentiment_score > 5) scoreColor = '#92acb4'
 
@@ -15,9 +20,9 @@ function PostAnalysis({ postSentiment }) {
       <div className='post-analysis-img'></div>
       <img src={postSentiment.data.media_url} />
       <p><b>kimkardashian</b> {postSentiment.data.caption}</p>
-      <p>❤️ <b>{postSentiment.data.likes_count}</b></p>
+      <p>❤️ <b>{numberWithCommas(postSentiment.data.likes_count)}</b></p>
       <p>Hashtags: <b>{modifiedhashtag}</b></p>
-      <b style={{color: scoreColor}}><p style={{fontWeight: '900'}}>Your Score: {postSentiment.data.sentiment_score} out of 10</p></b>
+      <b style={{ color: scoreColor }}><p style={{ fontWeight: '900' }}>Your Score: {postSentiment.data.sentiment_score} out of 10</p></b>
       <p>Summary: {postSentiment.data.analysis_description}</p>
     </div>
   )
