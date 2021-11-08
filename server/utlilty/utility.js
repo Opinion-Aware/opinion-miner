@@ -34,7 +34,7 @@ Utility.getSummaryObject = (sentimentAnalyses, summaryObject) => {
     // sort for frontend 
     sentimentAnalyses.sort((a, b) => a.sentiment_score - b.sentiment_score);
 
-    let avgScore = 0;
+    let averageScore = 0;
 
     // calculate average score 
     for (let i = 0; i < sentimentAnalyses.length; i++) {
@@ -46,8 +46,8 @@ Utility.getSummaryObject = (sentimentAnalyses, summaryObject) => {
 
     // put each analysis in a bucket based on sentiment score 
     let goodPosts = sentimentAnalyses.filter(e => e.sentiment_score > 7);
-    let midPosts = sentimentAnalyses.filter(e => e.sentiment_score < 7 && e.sentiment_score > 3);
-    let badPosts = sentimentAnalyses.filter(e => e.sentiment_score < 3);
+    let midPosts = sentimentAnalyses.filter(e => e.sentiment_score < 7 && e.sentiment_score > 4.5);
+    let badPosts = sentimentAnalyses.filter(e => e.sentiment_score <= 4.5);
 
     // construct summary text based on post buckets 
     let goodSummary = '';

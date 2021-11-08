@@ -45,7 +45,7 @@ sentimentController.getSentiment = async (req, res, next) => {
     let post;
     // find the post client requested and join comments
     for (let i = 0; i < igMediaArr.length; i++) {
-        if (igMediaArr[i].id = postID) {
+        if (igMediaArr[i].id === postID) {
             post = igMediaArr[i]
             break;
         }
@@ -69,12 +69,16 @@ sentimentController.getSentiment = async (req, res, next) => {
         // dynamically create analysis_description based on sentiment score
         // aribtrarily decided the following breakdown: 
         // good post score: > 7
-        // mid post score: between 3 and 7
-        // bad post: < 3
+        // mid post score: between 4.5 and 7
+        // bad post: <=4.5
+        console.log('sentiment: ');
+        console.log(sentiment);
+        // call utility function to normalize sentiment score 
+        let sentimentScore = utils.convertSentimentScore(sentiment.score);
         let analysisDescription; 
-        if(sentiment.score > 7){
+        if (sentimentScore > 7){
             analysisDescription = `Your audience loved this post! It looks like they love content related to ${post.hashtags[0]} and ${post.hashtags[1]}. Try posting more content like this to keep your audience engaged.`;
-        } else if (sentiment.score < 7 && sentiment.score > 3){
+        } else if (sentimentScore < 7 && sentimentScore > 4.5){
             analysisDescription = `This post was well received overall, though it did not elicit particularly high enthusiasm from your audience. Try performing analyses on more posts to determine what content your audience enjoys the most.`;
         } else{
             analysisDescription = `Your audience reacted negatively to this post. It looks like didn't enjoy content related to ${post.hashtags[0]} and ${post.hashtags[1]}. Avoid posting content like this to keep your audience engaged.`;
@@ -87,7 +91,7 @@ sentimentController.getSentiment = async (req, res, next) => {
             likes_count: post.likes_count,
             username: post.ig_user.username,
             caption: post.caption,
-            sentiment_score: utils.convertSentimentScore(sentiment.score),
+            sentiment_score: sentimentScore,
             sentiment_magnitude: sentiment.magnitude,
             post_date: post.timestamp,
             analysis_date: Date(),
@@ -108,6 +112,7 @@ sentimentController.getSentiment = async (req, res, next) => {
 // gets top + bottom 3 analyses from senimentCache 
 // --> eventually this will be from the database
 sentimentController.getSentimentSummary = async (req, res, next) => {
+    console.log('INSIDE GET SENTIMENT SUMMARY CONTROLLER');
     try{
         // get all sentiment analyses from storage
         // eventually this will be from the database
@@ -115,11 +120,13 @@ sentimentController.getSentimentSummary = async (req, res, next) => {
 
         const emptyDescription = "Looks like you haven't analyzed any posts yet!";
 
-        const summaryObject = {
+        let summaryObject = {
             summaryText: emptyDescription,
             averageScore: 0,
             analyses: []
         }
+
+        console.log(sentimentAnalyses);
 
         // EDGE CASE: none are in the DB
         if (sentimentAnalyses.length === 0) return summaryObject;

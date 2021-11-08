@@ -12,6 +12,7 @@ router.post('/', sentimentController.getSentiment, (req, res) => {
 
 // gets top + bottom 3 analyses 
 router.get('/summary', sentimentController.getSentimentSummary, (req, res) => {
+  console.log('got this far');
   return res.status(200).json(res.locals.sentimentSummary);
 });
 
