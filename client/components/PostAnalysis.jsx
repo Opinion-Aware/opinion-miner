@@ -1,3 +1,4 @@
+import { fontWeight } from '@mui/system';
 import React from 'react';
 
 
@@ -7,14 +8,20 @@ function PostAnalysis({ postSentiment }) {
     modifiedhashtag.push(`#${el} `)
   })
 
+  let scoreColor = '#996666'
+  if (postSentiment.data.sentiment_score > 5) scoreColor = '#92acb4'
+
+
   return (
     // console.log(postSentiment.data.hashtags)
     <div className="postAnalysis">
-      <img className='post-analysis-img' src={postSentiment.data.media_url} />
-      <p>Post Description: {postSentiment.data.caption}</p>
-      <p>Hashtags: {modifiedhashtag}</p>
-      <p>Your Score: {postSentiment.data.sentiment_score}</p>
-      <p>Analysis Summary: {postSentiment.data.analysis_description}</p>
+      <div className='post-analysis-img'></div>
+      <img src={postSentiment.data.media_url} />
+      <p><b>kimkardashian</b> {postSentiment.data.caption}</p>
+      <p>❤️ <b>{postSentiment.data.likes_count}</b></p>
+      <p>Hashtags: <b>{modifiedhashtag}</b></p>
+      <b style={{color: scoreColor}}><p style={{fontWeight: '900'}}>Your Score: {postSentiment.data.sentiment_score} out of 10</p></b>
+      <p>Summary: {postSentiment.data.analysis_description}</p>
     </div>
   )
 }

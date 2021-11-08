@@ -77,11 +77,11 @@
 }
 
 .postAnalysis img {
-    width: 80%;
-    height: 80%;
-    // object-fit: cover;
-    border-radius: 200px;
+  overflow: auto;
+  border-radius: inherit;
+  margin-top: 20px;
 }
+
 
 .postContainer {
   background-color: white;
