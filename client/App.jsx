@@ -1,6 +1,4 @@
-
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import Login from './components/Login.jsx';
 import Dashboard from './components/Dashboard.jsx';
@@ -21,7 +19,7 @@ class App extends Component {
         isLoggedIn: false,
         },
       userPosts : [], // Array of objects
-      userStatistics: [],  //TODO Decide on format
+      userStatistics: [], // Information for summary modal
       postSentiment: {}, // Single object
       postSentimentRender: false, // Tells the dashboard whether we have a sentiment analysis to render
     }
@@ -74,7 +72,6 @@ class App extends Component {
     .then(res => {
       const postSentiment = res;
       const postSentimentRender = true;
-      console.log('received post sentiment', res)
       this.setState({ postSentiment, postSentimentRender })
     })
     .catch(function (error) {
@@ -82,12 +79,13 @@ class App extends Component {
     });
   }
 
-  // TODO: Format method to pass in user id
+  // TODO:  Stretch: Format method to pass in user id
   getStatistics() {
     fetch('http://localhost:3000/sentiment/summary') 
     .then(res => res.text())
     .then(res => {
       res = JSON.parse(res)
+      console.log('userstats',res)
       const userStatistics = res;
       this.setState({ userStatistics })
     })
@@ -119,11 +117,10 @@ class App extends Component {
   }
 
   render() {
-    console.log('Current State ',this.state)
     let renderContent;
     if (this.state.user.isLoggedIn) {   //({ name, userStats , getPosts })
       renderContent = <Dashboard
-        name={"kim"} // TODO: UPDATE WITH LINE BELOW TO USE OAUTH USER NAME
+        name={"kim k"} // TODO: UPDATE WITH LINE BELOW TO USE OAUTH USER NAME
         // name={this.state.user.name} 
         userStats={this.state.userStats} 
         userPosts={this.state.userPosts} 
@@ -138,12 +135,6 @@ class App extends Component {
     return (
         <div className="app">
           {renderContent}
-          {/* 
-          Syntax for alternative option with react router:
-          <Switch>
-            <Route path="/" component={Login} exact />
-            <Route path="/dashboard" component={Dashboard} exact />
-          </Switch> */}
         </div>
         
     )

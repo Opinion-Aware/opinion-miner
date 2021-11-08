@@ -10,30 +10,33 @@
   flex-direction: row !important;
   justify-content: space-between;
   align-items: flex-end;
-  width: 100vw;
-  height: 100vh;
+  width: 98vw;
+  height: 98vh;
 }
 
 .welcome {
+  margin-left: 1.5vw;
+  margin-bottom: 1.5vw;
+  border-radius: $border-radius;
   font-family: 'Permanent Marker', cursive;
-  line-height: 120px;
+  background-color: transparentize(white, 0.5);
   color: $color-background-dark;
-  font-size: 30px;
-  padding: 2vw;
-  width: 25vw;
-  height: 30vh;
+  font-size: $title-font-size;
+  line-height: $title-line-height;
+  padding: $box-padding;
+  min-width: 20vw;
+  height: 22vh;
   display: flex ;    
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-around;
-  padding-bottom: 20px;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .buttonStats {
-  background-color: transparentize(white, 0.5);
+  background-color: $color-background-light;
   font-family: 'Montserrat', sans-serif;
   font-size: 17px;
-  border-radius: 9px;
+  border-radius: $border-radius;
   padding: 8px;
   border: 0px;
   &:hover {
@@ -50,8 +53,6 @@
   font-size: 10px;
 }
 
-
-
 .postScroll {
   display: flex ;    
   flex-direction: column;
@@ -60,22 +61,25 @@
 }
 
 .postAnalysis {
+  margin-left: 1.5vw;
+  margin-right: 1.5vw;
+  margin-bottom: 1.5vw;
   padding-left: 20px;
   padding-right: 30px;
+  border-radius: $border-radius;
+  background-color: transparentize(white, 0.5);
   font-size: 18px;
-  width: 35%;
-  height: 90%;
-  max-width: 30%;
+  max-width: 30vw;
+  height: 90vh;
   display: flex ;    
   flex-direction: column;
   justify-content: flex-end;
-  background-color: transparentize(white, 0.8);
 }
 
 .postContainer {
   background-color: white;
   padding: 10px;
-  width: 40vw;
+  max-width: 40vw;
   height: 90vh;
   display: flex ;    
   flex-direction: column;

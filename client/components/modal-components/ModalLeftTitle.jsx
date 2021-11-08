@@ -1,12 +1,9 @@
 import React, { Component, useState } from 'react';
 
-function ModalLeftTitle () {
-   //const [name, setName] = useState();
-  // const handleHide = () => setModalShow(false);
-
+function ModalLeftTitle ( {name} ) {
   return (
-      <div>
-        You are in ModalLeftTitle
+      <div className="modalLeftTitle">
+        {`${name}'s summary`}
       </div>
   )
 }
