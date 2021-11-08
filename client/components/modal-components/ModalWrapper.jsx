@@ -4,12 +4,12 @@ import ModalCenter from './ModalCenter.jsx';
 import ModalLeft from './ModalLeft.jsx';
 
 function ModalWrapper ({ name, userStats, setModalShow }) {
- 
+
   return (
       <div className="modal-main">
-        <ModalLeft name={name} userStats={userStats}/>
-        <ModalCenter name={name} userStats={userStats}/>
-        <ModalRight name={name} userStats={userStats} setModalShow={setModalShow}/>
+        <ModalLeft name={name} userStats={JSON.stringify(userStats)}/>
+        <ModalCenter userStats={userStats}/>
+        <ModalRight userStats={userStats} setModalShow={setModalShow}/>
       </div>
   )
 }

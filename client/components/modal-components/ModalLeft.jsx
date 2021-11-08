@@ -9,8 +9,10 @@ function ModalLeft ({ name, userStats }) {
 
   return (
       <div className="modalLeft">
-        <ModalLeftTitle/>
-        <ModalLeftStringSummary/>
+        <ModalLeftTitle name={name}/>
+        {/* // TODO: Uncomment after endpoint merged */}
+        <ModalLeftStringSummary summaryText={["Your users love posts that did this and that, in particular your post about something.", "On the other hand, they showed indifference towards these others.", "Lastly, the least liked posts covered topics such as this and those."]}/>
+        {/* <ModalLeftStringSummary summaryText={userStats.summaryText}/> */}
       </div>
   )
 }
