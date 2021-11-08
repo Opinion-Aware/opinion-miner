@@ -76,6 +76,13 @@
   justify-content: flex-end;
 }
 
+.postAnalysis img {
+    width: 80%;
+    height: 80%;
+    // object-fit: cover;
+    border-radius: 200px;
+}
+
 .postContainer {
   background-color: white;
   padding: 10px;
