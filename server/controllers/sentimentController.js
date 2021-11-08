@@ -13,7 +13,8 @@ const sentimentController = {};
 
 sentimentController.getSentiment = async (req, res, next) => {
     // received from client side. Used for finding comments pertaining to the desired post
-    const postID = req.body.postID
+    // UPDATED TO QUERY INSTEAD OF BODY
+    const postID = req.query.postID
 
     const sentimentCahe = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../db/sentimentCache.json'), 'UTF-8'));
 

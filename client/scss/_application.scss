@@ -1,12 +1,43 @@
 @import '_variables';
 @import '_statsModal';
+@import '_dashboard';
 
-.app {
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+
+#root {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
 }
 
 .loginBox {
+  font-family: 'Permanent Marker', cursive;
+  line-height: 120px;
+  color: white;
+  font-size: 70px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: $color-accent
+}
+
+.facebookButton {
+  background-color: transparentize(white, 0.8);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  border: none;
+  color: white;
+  border-radius: 9px;
+  padding: 8px;
+  &:hover {
+    background-color: transparentize(white, 0.2);
+    font-style: bold;
+    color: $color-accent;
+  }
 }

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import PostScroll from './PostScroll';
+import PostScroll from './PostScroll.jsx';
 
 
 
 
 export class PostContainer extends Component {
+
     constructor(props) {
         super(props)
 
@@ -36,8 +37,11 @@ export class PostContainer extends Component {
     render() {
         return (
             // overflow-y: scroll inside of style
-            <div>
-                <PostScroll tweets={this.tweets} />
+            <div className="postContainer">
+                <PostScroll 
+                  userPosts={this.props.userPosts} 
+                  getPostSentiment={this.props.getPostSentiment} 
+                  tweets={this.tweets} />
             </div>
         )
     }

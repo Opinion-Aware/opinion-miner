@@ -3,10 +3,11 @@
 $title-font: 'Playfair Display', serif;
 $little-font: 'Source Sans Pro', sans-serif;
 
-$color-background: #FCD667;
+$color-background: #778899;
 $color-background-light: lighten($color-background, 22);
+$color-background-dark: darken($color-background, 22);
 
-$color-accent: #FCD667;
+$color-accent: #92acb4;
 $color-background-light: lighten($color-accent, 22);
 
 $color-complement: #FCD667;
