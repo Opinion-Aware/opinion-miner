@@ -6,7 +6,7 @@ const language = require('@google-cloud/language');
 // google project id
 const projectId = 'opinion-miner-331420'
 // json file that contains private keys. Contains auth information to talk to google's language api
-const keyFilename = path.resolve(__dirname, '../../../opinion-miner-331420-9f2db2de5f9c.json')
+const keyFilename = path.resolve(__dirname, '../../opinion-miner-331420-9f2db2de5f9c.json')
 const client = new language.LanguageServiceClient({ projectId, keyFilename });
 
 const sentimentController = {};
@@ -62,7 +62,7 @@ sentimentController.getSentiment = async (req, res, next) => {
             hashtags: post.hashtags,
             username: post.ig_user.username,
             caption: post.caption,
-            sentiment_score: sentiment.score,
+            sentiment_score: utils.convertSentimentScore(sentiment.score),
             sentiment_magnitude: sentiment.magnitude,
             post_date: post.timestamp,
             analysis_date: Date(),

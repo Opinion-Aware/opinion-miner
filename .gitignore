@@ -4,6 +4,7 @@ build/*.js
 npm-debug.log
 .DS_Store
 .vscode/
+opinion-miner-*
 
 # Logs
 logs
