@@ -9,37 +9,55 @@ import Typography from '@mui/material/Typography';
 
 
 
-export default function SinglePost({postInfo, post_id, getPostSentiment}) {
+export default function SinglePost({ postInfo, post_id, getPostSentiment }) {
 
 
 
     return (
-      <button className="singlePost" onClick={() => getPostSentiment(post_id)}>
-        <List sx={{ width: '100%', Width: 500, bgcolor: 'background.paper' }}>
-            <ListItem alignItems="flex-start">
-                <ListItemAvatar>
-                    {/* // TODO UPDATE IMAGE SOURCE SO THAT IT SHOWS: {postInfo.media_url} */}
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                </ListItemAvatar>
-                <ListItemText
-                    primary={postInfo.caption}
-                    secondary={
-                        <React.Fragment>
-                            <Typography
-                                sx={{ display: 'inline' }}
-                                component="span"
-                                variant="body2"
-                                color="text.primary"
-                            >
-                                Fake Kim K
-                            </Typography>
-                            {/* // TODO: Replace below with Location / LikeCount / Date ?? */}
-                            {" — generic tweet about something boring"} 
-                        </React.Fragment>
-                    }
-                />
-            </ListItem>
-            {/* <Divider variant="inset" component="li" />
+        <button className="singlePost" onClick={() => getPostSentiment(post_id)}>
+            <List sx={{ width: '100%', Width: 500, bgcolor: '#f0f5f5' }}>
+                <ListItem alignItems="flex-start">
+                    <ListItemAvatar>
+                        {/* // TODO UPDATE IMAGE SOURCE SO THAT IT SHOWS: {postInfo.media_url} */}
+                        <Avatar
+                            alt="Remy Sharp"
+                            // sx={ width: 24, height: 24 }
+                            variant='square'
+                            src='https://i.imgur.com/0N4Huwn.jpg'
+                        />
+                    </ListItemAvatar>
+                    <ListItemText
+                        sx={{ fontFamily: 'Montserrat, sans-serif' }}
+                        primary={
+                            <React.Fragment>
+                                <Typography
+                                    sx={{ fontFamily: 'Montserrat, sans-serif', display: 'inline' }}
+                                    component="span"
+                                    variant="body2"
+                                    color="#0a1429"
+                                >
+                                    {postInfo.caption}
+                                </Typography>
+
+                            </React.Fragment>
+                        }
+                        secondary={
+                            <React.Fragment>
+                                <Typography
+                                    sx={{ fontFamily: 'Montserrat, sans-serif', display: 'inline' }}
+                                    component="span"
+                                    variant="body2"
+                                    color="#0a1429"
+                                >
+                                    @kimkardashian  {postInfo.likes_count} likes
+                                </Typography>
+                                {/* // TODO: Replace below with  / LikeCount / Date ?? */}
+                                { }
+                            </React.Fragment>
+                        }
+                    />
+                </ListItem>
+                {/* <Divider variant="inset" component="li" />
             <ListItem alignItems="flex-start">
                 <ListItemAvatar>
                     <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
@@ -83,7 +101,7 @@ export default function SinglePost({postInfo, post_id, getPostSentiment}) {
                     }
                 />
             </ListItem> */}
-        </List>
-      </button>
+            </List>
+        </button>
     );
 }
