@@ -32,7 +32,7 @@ app.use('/carousel', carouselRouter);
 // catch-all route handler for any requests to an unknown route 
 app.use((req, res) => {
   res.statusCode = 404;
-  res.send(`Error code ${res.statusCode} sorry`);
+  res.send(`Catch-all route handler: Error code ${res.statusCode} sorry`);
 });
 
 // express global handler
