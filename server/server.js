@@ -29,7 +29,7 @@ app.use('/sentiment', sentimentRouter);
 // Setup router for carousel data 
 app.use('/carousel', carouselRouter);
 
-// catch-all route handler for any requests to an unknown route
+// catch-all route handler for any requests to an unknown route 
 app.use((req, res) => {
   res.statusCode = 404;
   res.send(`Error code ${res.statusCode} sorry`);
