@@ -6,7 +6,7 @@
 .dashboardContainer {
   background-color: transparentize($color-background-light,0.5);
   font-family: 'Montserrat', sans-serif;
-  display: flex;    
+  display: flex;  
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
@@ -46,7 +46,7 @@
 }
 
 .singlePost {
-  background: 'linear-gradient(45deg, #FE6B8B, #ff8e53)';
+  background: white;
   border: none;
   border: 15;
   
@@ -86,11 +86,20 @@
   justify-content: space-between;
   align-items: stretch;
   overflow: auto;
+  margin-bottom: 1.5vw;
+  border-radius: 9px;
+  
+}
+
+.ListPostContainer{
+  background-color: transparentize($color-background-light,0.5);
+  border-radius: 9px;
+}
+
+.css-1pqm26d-MuiAvatar-img{
+  border-radius: 5px;
 }
 
 .postContainer::-webkit-scrollbar{
   width: 0;
 }      
-
-
-

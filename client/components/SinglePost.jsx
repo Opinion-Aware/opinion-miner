@@ -6,6 +6,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
+import variables from '../scss/_variables.scss';
 
 
 
@@ -61,8 +62,10 @@ export default function SinglePost({ postInfo, post_id, getPostSentiment }) {
 
     return (
         <button className="singlePost" onClick={() => getPostSentiment(post_id)}>
-            <List sx={{ width: '100%', Width: 500, bgcolor: '#f0f5f5' }}>
-                <ListItem alignItems="flex-start">
+            <List sx={{ width: '100%', Width: 500 }} className="ListPostContainer">
+                <ListItem
+                    alignItems="flex-start"
+                >
                     <ListItemAvatar>
                         {/* // TODO UPDATE IMAGE SOURCE SO THAT IT SHOWS: {postInfo.media_url} */}
                         <Avatar
@@ -70,6 +73,7 @@ export default function SinglePost({ postInfo, post_id, getPostSentiment }) {
                             // sx={ width: 24, height: 24 }
                             variant='square'
                             src={postInfo.media_url}
+                            className="postAvatar"
                         />
                     </ListItemAvatar>
                     <ListItemText
