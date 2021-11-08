@@ -15,7 +15,8 @@
 }
 
 .welcome {
-  margin: 1.5vw;
+  margin-left: 1.5vw;
+  margin-bottom: 1.5vw;
   border-radius: $border-radius;
   font-family: 'Permanent Marker', cursive;
   background-color: transparentize(white, 0.5);
@@ -23,7 +24,7 @@
   font-size: $title-font-size;
   line-height: $title-line-height;
   padding: $box-padding;
-  width: 20vw;
+  min-width: 20vw;
   height: 22vh;
   display: flex ;    
   flex-direction: column;
@@ -60,22 +61,25 @@
 }
 
 .postAnalysis {
+  margin-left: 1.5vw;
+  margin-right: 1.5vw;
+  margin-bottom: 1.5vw;
   padding-left: 20px;
   padding-right: 30px;
+  border-radius: $border-radius;
+  background-color: transparentize(white, 0.5);
   font-size: 18px;
-  width: 35%;
-  height: 90%;
-  max-width: 30%;
+  max-width: 30vw;
+  height: 90vh;
   display: flex ;    
   flex-direction: column;
   justify-content: flex-end;
-  background-color: transparentize(white, 0.8);
 }
 
 .postContainer {
   background-color: white;
   padding: 10px;
-  width: 40vw;
+  max-width: 40vw;
   height: 90vh;
   display: flex ;    
   flex-direction: column;

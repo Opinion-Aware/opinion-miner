@@ -14,7 +14,6 @@ export class PostScroll extends Component {
   render() {
     const singlePostArr = [];
     for (let i = 0; i < this.props.userPosts.length; i++) {
-      console.log(this.props.userPosts[i].id)
       singlePostArr.push(
         <SinglePost
           key={i}

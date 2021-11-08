@@ -72,7 +72,6 @@ class App extends Component {
     .then(res => {
       const postSentiment = res;
       const postSentimentRender = true;
-      console.log('received post sentiment', res)
       this.setState({ postSentiment, postSentimentRender })
     })
     .catch(function (error) {
@@ -86,6 +85,7 @@ class App extends Component {
     .then(res => res.text())
     .then(res => {
       res = JSON.parse(res)
+      console.log('userstats',res)
       const userStatistics = res;
       this.setState({ userStatistics })
     })
@@ -117,7 +117,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('Current State ',this.state)
     let renderContent;
     if (this.state.user.isLoggedIn) {   //({ name, userStats , getPosts })
       renderContent = <Dashboard
