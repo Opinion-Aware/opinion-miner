@@ -17,6 +17,7 @@ export class PostScroll extends Component {
       console.log(this.props.userPosts[i].id)
       singlePostArr.push(
         <SinglePost
+          key={i}
           postInfo={this.props.userPosts[i]}
           post_id={this.props.userPosts[i].id}
           getPostSentiment={this.props.getPostSentiment}

@@ -18,7 +18,8 @@ export default function SinglePost({postInfo, post_id, getPostSentiment}) {
         <List sx={{ width: '100%', Width: 500, bgcolor: 'background.paper' }}>
             <ListItem alignItems="flex-start">
                 <ListItemAvatar>
-                    <image src={postInfo.media_url} alt="Remy Sharp"  />
+                    {/* // TODO UPDATE IMAGE SOURCE SO THAT IT SHOWS: {postInfo.media_url} */}
+                    <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
                 </ListItemAvatar>
                 <ListItemText
                     primary={postInfo.caption}
@@ -32,7 +33,8 @@ export default function SinglePost({postInfo, post_id, getPostSentiment}) {
                             >
                                 Fake Kim K
                             </Typography>
-                            {" — generic tweet about something boring"}
+                            {/* // TODO: Replace below with Location / LikeCount / Date ?? */}
+                            {" — generic tweet about something boring"} 
                         </React.Fragment>
                     }
                 />

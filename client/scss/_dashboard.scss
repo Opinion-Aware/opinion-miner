@@ -4,7 +4,7 @@
 
 
 .dashboardContainer {
-  background-color: lighten(#D9D6CF, 80%); 
+  background-color: transparentize($color-background-light,0.5);
   font-family: 'Montserrat', sans-serif;
   display: flex !important;    
   flex-direction: row !important;
@@ -14,11 +14,32 @@
   height: 100vh;
 }
 
+.welcome {
+  font-family: 'Permanent Marker', cursive;
+  line-height: 120px;
+  color: $color-background-dark;
+  font-size: 30px;
+  padding: 2vw;
+  width: 25vw;
+  height: 30vh;
+  display: flex ;    
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  padding-bottom: 20px;
+}
+
 .buttonStats {
-  background: 'linear-gradient(45deg, #FE6B8B, #ff8e53)';
-  border: 0;
-  border: 15;
-  color: 'white';
+  background-color: transparentize(white, 0.5);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 17px;
+  border-radius: 9px;
+  padding: 8px;
+  border: 0px;
+  &:hover {
+    background-color: transparentize(white, 0.2);
+    color: $color-accent;
+  }
 }
 
 .singlePost {
@@ -29,14 +50,7 @@
   font-size: 10px;
 }
 
-.welcome {
-  width: 25vw;
-  height: 90vh;
-  display: flex ;    
-  flex-direction: column;
-  justify-content: space-between;
-  padding-bottom: 20px;
-}
+
 
 .postScroll {
   display: flex ;    
@@ -55,13 +69,14 @@
   display: flex ;    
   flex-direction: column;
   justify-content: flex-end;
+  background-color: transparentize(white, 0.8);
 }
 
 .postContainer {
   background-color: white;
   padding: 10px;
+  width: 40vw;
   height: 90vh;
-  width: 40vw !important;
   display: flex ;    
   flex-direction: column;
   justify-content: space-between;

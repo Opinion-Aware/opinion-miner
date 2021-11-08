@@ -28,14 +28,16 @@
 }
 
 .facebookButton {
-  background-color: transparentize(white, 0.5);
+  background-color: transparentize(white, 0.8);
   font-family: 'Montserrat', sans-serif;
   font-size: 20px;
   border: none;
-  width: 20vw;
-  height:3vw;
+  color: white;
+  border-radius: 9px;
+  padding: 8px;
   &:hover {
     background-color: transparentize(white, 0.2);
     font-style: bold;
+    color: $color-accent;
   }
 }

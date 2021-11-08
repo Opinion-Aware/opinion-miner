@@ -123,7 +123,8 @@ class App extends Component {
     let renderContent;
     if (this.state.user.isLoggedIn) {   //({ name, userStats , getPosts })
       renderContent = <Dashboard
-        name={this.state.user.name} 
+        name={"kim"} // TODO: UPDATE WITH LINE BELOW TO USE OAUTH USER NAME
+        // name={this.state.user.name} 
         userStats={this.state.userStats} 
         userPosts={this.state.userPosts} 
         getPosts={this.getPosts}
