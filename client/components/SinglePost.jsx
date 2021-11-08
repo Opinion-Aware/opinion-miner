@@ -9,18 +9,19 @@ import Typography from '@mui/material/Typography';
 
 
 
-export default function SinglePost() {
+export default function SinglePost({postInfo, post_id, getPostSentiment}) {
 
 
 
     return (
-        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+      <button className="singlePost" onClick={() => getPostSentiment(post_id)}>
+        <List sx={{ width: '100%', Width: 500, bgcolor: 'background.paper' }}>
             <ListItem alignItems="flex-start">
                 <ListItemAvatar>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                    <image src={postInfo.media_url} alt="Remy Sharp"  />
                 </ListItemAvatar>
                 <ListItemText
-                    primary="Brunch this weekend?"
+                    primary={postInfo.caption}
                     secondary={
                         <React.Fragment>
                             <Typography
@@ -36,7 +37,7 @@ export default function SinglePost() {
                     }
                 />
             </ListItem>
-            <Divider variant="inset" component="li" />
+            {/* <Divider variant="inset" component="li" />
             <ListItem alignItems="flex-start">
                 <ListItemAvatar>
                     <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
@@ -79,7 +80,8 @@ export default function SinglePost() {
                         </React.Fragment>
                     }
                 />
-            </ListItem>
+            </ListItem> */}
         </List>
+      </button>
     );
 }

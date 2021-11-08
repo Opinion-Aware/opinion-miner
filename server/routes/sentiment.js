@@ -5,7 +5,8 @@ const sentimentController = require('../controllers/sentimentController');
 
 const router = express.Router();
 
-router.get('/', sentimentController.getSentiment, (req, res) => {
+//UPDATED TO POST REQUEST
+router.post('/', sentimentController.getSentiment, (req, res) => {
     return res.status(200).json(res.locals.sentiment);
   });
 

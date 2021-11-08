@@ -20,7 +20,7 @@ class ModalRightGraph extends Component {
           backgroundColor: '#92acb4',
           borderColor: 'rgba(0,0,0,1)',
           borderWidth: 0,
-          data: [1, 2, 3, 4, 5, 6],
+          data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
         }
       ]
     }
@@ -28,6 +28,8 @@ class ModalRightGraph extends Component {
       <div className='modalRightGraph'>
         <Bar
         data={graphInfo}
+        width={100}
+	      height={90}
         options={{
             plugins: {
               legend: {

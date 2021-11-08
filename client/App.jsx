@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-
+import axios from 'axios';
 import Login from './components/Login.jsx';
 import Dashboard from './components/Dashboard.jsx';
 
@@ -23,7 +23,7 @@ class App extends Component {
       userPosts : [], // Array of objects
       userStatistics: [],  //TODO Decide on format
       postSentiment: {}, // Single object
-
+      postSentimentRender: false, // Tells the dashboard whether we have a sentiment analysis to render
     }
 
   // TODO Comment out this example of post Sentiment Object
@@ -58,30 +58,48 @@ class App extends Component {
       res = JSON.parse(res)
       const userPosts = res;
       this.setState({ userPosts })
+    })
+    .catch(function (error) {
+      console.error(error);
     });
   }
   
   getPostSentiment(postID) {
-    fetch('http://localhost:3000/sentiment', { 
-      body: JSON.stringify({ postID })
-    })
-    .then(res => res.text())
+    const getSentimentRequest = {
+      method: 'POST',
+      url: 'http://localhost:3000/sentiment',
+      params: {postID: `${postID}`}
+    }
+    axios.request(getSentimentRequest)
     .then(res => {
-      res = JSON.parse(res)
       const postSentiment = res;
-      this.setState({ postSentiment })
+      const postSentimentRender = true;
+      console.log('received post sentiment', res)
+      this.setState({ postSentiment, postSentimentRender })
+    })
+    .catch(function (error) {
+      console.error(error);
     });
   }
 
+  // TODO: Format method to pass in user id
   getStatistics() {
-    fetch('http://localhost:3000/statistics')  // TODO Confirm endpoint
+    fetch('http://localhost:3000/sentiment/summary') 
     .then(res => res.text())
     .then(res => {
       res = JSON.parse(res)
       const userStatistics = res;
       this.setState({ userStatistics })
+    })
+    .catch(function (error) {
+      console.error(error);
     });
   }
+//   const summaryObject = {
+//     summaryText: emptyDescription, 
+//     averageScore: 0, 
+//     analyses: []
+// }
 
 
   setLoginData(response) {
@@ -104,12 +122,14 @@ class App extends Component {
     console.log('Current State ',this.state)
     let renderContent;
     if (this.state.user.isLoggedIn) {   //({ name, userStats , getPosts })
-      renderContent = <Dashboard 
-        name={this.state.name} 
+      renderContent = <Dashboard
+        name={this.state.user.name} 
         userStats={this.state.userStats} 
         userPosts={this.state.userPosts} 
         getPosts={this.getPosts}
+        postSentiment={this.state.postSentiment}
         getPostSentiment={this.getPostSentiment}
+        postSentimentRender={this.state.postSentimentRender}
       />;
     } else {
       renderContent = <Login setLoginData={this.setLoginData}/>;
